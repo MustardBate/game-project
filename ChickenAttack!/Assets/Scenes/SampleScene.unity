@@ -353,7 +353,7 @@ MonoBehaviour:
   shotPoint: {fileID: 1284477667}
   projectile: {fileID: 5836040982805557876, guid: c18b9cd62a5fc1f4f88d22b40003e2d9, type: 3}
   timeBetweenShot: 0.6
-  animator: {fileID: 0}
+  animator: {fileID: 1423742257}
 --- !u!50 &1423742256
 Rigidbody2D:
   serializedVersion: 4
