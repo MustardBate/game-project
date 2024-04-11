@@ -44,7 +44,7 @@ public class MeleeEnemy : MonoBehaviour
         Vector2 targetDir = player.position - transform.position;
         float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f;
         Quaternion q = Quaternion.Euler(new Vector3(0, 0, angle));
-        transform.localRotation = Quaternion.Lerp(transform.localRotation, q, angle);
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, q, angle);
     }
 
 }
