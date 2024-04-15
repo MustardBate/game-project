@@ -6,10 +6,9 @@ My game project for the USTH Internship 2024. I'm going to use this as a list of
 + Player's walking animation
 + Gun's sprite & rotation with cursor
 + Player's projectile and ability to shoot
-
++ Basic enemy that chase player & shoot back
 
 ***What needs to be implemented:***
-+ Basic enemy that chase player & shoot back
 + Health & damage system
 + UI design:
     + Main menu
