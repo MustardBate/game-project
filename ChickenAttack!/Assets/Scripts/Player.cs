@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     Vector2 movement;
 
-    public Transform weapon;
+    public Transform weapon;    
     public float offset;
 
     public Transform shotPoint;

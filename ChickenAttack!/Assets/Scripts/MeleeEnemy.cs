@@ -4,47 +4,33 @@ using UnityEngine;
 
 public class MeleeEnemy : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    public GameObject player;
     public float speed;
-    public Transform player;
-    public float rotateSpeed;
+    public Rigidbody2D rb;
+    public float distanceBetween;
 
-    // Start is called before the first frame update
-    void Start()
+    private float distance;
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        // Detect the target
-        if (!player)
+        distance = Vector2.Distance(transform.position, player.transform.position);
+        Vector2 direction = player.transform.position - transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        //Conditions
+        if (distance < distanceBetween)
         {
-            getPlayer();
+            //Move the enemy towards Player
+            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+
+            //Rotating enemy towards player
+            transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         }
-        else
-        {
-            RotateTowardsTarget();
-        }
     }
-
-    private void FixedUpdate()
-    {
-        rb.velocity = transform.up * speed;
-    }
-
-    private void getPlayer()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-
-    private void RotateTowardsTarget()
-    {
-        Vector2 targetDir = player.position - transform.position;
-        float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f;
-        Quaternion q = Quaternion.Euler(new Vector3(0, 0, angle));
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, q, angle);
-    }
-
 }
