@@ -164,4 +164,4 @@ MonoBehaviour:
   bulletSpeed: 5.2
   lifeTime: 1.86
   rb: {fileID: 4909403130734043960}
-  health: 0
+  damage: 20

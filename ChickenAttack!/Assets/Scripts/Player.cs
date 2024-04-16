@@ -55,12 +55,14 @@ public class Player : MonoBehaviour
                 Instantiate(projectile, shotPoint.position, shotPoint.rotation);
             }
         }
+
     }
 
     public void takeDamage(float damage)
     {
         health -= damage;
-        if(health <= 0)
+
+        if (health <= 0)
         {
             Destroy(gameObject);
         }

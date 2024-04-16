@@ -29,6 +29,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            other.gameObject.GetComponent<EnemyManager>().takeDamage(damage);
             Destroy(gameObject);
         }
     }

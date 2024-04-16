@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 654761362}
   - component: {fileID: 654761361}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: MeleeEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -341,10 +341,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac07e36e2970ec6498bf34be69bc935d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1423742252}
-  speed: 2.5
+  fullHealth: 50
+  rangeTilPursuit: 0
+  walkingSpeed: 1.5
   rb: {fileID: 654761360}
-  distanceBetween: 5.64
+  player: {fileID: 1423742252}
 --- !u!61 &654761362
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -390,6 +391,50 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.9}
   m_EdgeRadius: 0
+--- !u!1 &1048211753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1048211755}
+  - component: {fileID: 1048211754}
+  m_Layer: 0
+  m_Name: LogicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1048211754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048211753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aab096dc8ffee0449492a8bc006f2a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1048211755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048211753}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.22090255, y: 0.40385985, z: 0.3705831}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1157903560
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,7 +784,7 @@ GameObject:
   - component: {fileID: 1667057623}
   - component: {fileID: 1667057627}
   m_Layer: 0
-  m_Name: Enemy2
+  m_Name: RangedEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -757,13 +802,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d0a13911c32e24e91776704c341674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fullHealth: 70
+  rangeTilPursuit: 20
+  walkingSpeed: 1.5
+  rb: {fileID: 1667057624}
+  player: {fileID: 1423742252}
   bullet: {fileID: 1088952018145975107, guid: 71784bea32ffc144f9cd16a555be2adb, type: 3}
   bulletPos: {fileID: 1667057626}
-  player: {fileID: 1423742252}
   timeBetweenShot: 1
-  shootRange: 6.5
-  walkingRange: 7
-  walkingSpeed: 1.5
+  shootingRange: 8
 --- !u!50 &1667057624
 Rigidbody2D:
   serializedVersion: 4
@@ -1066,3 +1113,4 @@ SceneRoots:
   - {fileID: 1667057626}
   - {fileID: 1157903564}
   - {fileID: 1963182737}
+  - {fileID: 1048211755}

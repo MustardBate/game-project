@@ -2,31 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemy : MonoBehaviour
-{
-    public GameObject player;
-    public float speed;
-    public Rigidbody2D rb;
-    public float distanceBetween;
-
-    private float distance;
-
-    private void Start()
+public class MeleeEnemy : EnemyManager
+{ 
+    new void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        base.Start();
     }
 
     private void Update()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        Vector2 direction = player.transform.position - transform.position;
-        direction.Normalize();
-
         //Conditions
-        if (distance < distanceBetween)
+        if (distance < rangeTilPursuit)
         {
             //Move the enemy towards Player
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, walkingSpeed * Time.deltaTime);
         }
     }
+
 }
