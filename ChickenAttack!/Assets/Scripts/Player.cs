@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
     public float timeBetweenShot;
     float nextTimeShot;
 
-    public float health;
+    private float health;
+    public float maxHealth;
 
     public Animator animator;
 
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -55,8 +57,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void takeDamage(float damage)
+    {
+        health -= damage;
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
-    }
+    }   
 }
+

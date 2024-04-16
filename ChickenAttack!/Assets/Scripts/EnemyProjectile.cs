@@ -12,6 +12,7 @@ public class EnemyProjectile : MonoBehaviour
     public float bulletLifeTime;
     public float speed;
     private float timer;
+    public float damage;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            other.gameObject.GetComponent<Player>().takeDamage(damage);
             Destroy(gameObject);
         }
     }

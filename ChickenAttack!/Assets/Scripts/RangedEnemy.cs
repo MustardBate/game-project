@@ -10,7 +10,10 @@ public class RangedEnemy : MonoBehaviour
 
     private float timer;
     public float timeBetweenShot;
-    public float range;
+    public float shootRange;
+    public float walkingRange;
+    public float walkingSpeed;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -19,16 +22,23 @@ public class RangedEnemy : MonoBehaviour
     private void Update()
     {
         float distance = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log(distance);
+        Vector2 direction = player.transform.position - transform.position;
+        direction.Normalize();
 
-        if (distance < range)
+        //Conditions for enemy to pursuit player at certain range
+        if (distance < walkingRange)
         {
-            timer += Time.deltaTime;
-
-            if (timer > timeBetweenShot)
+            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, walkingSpeed * Time.deltaTime);
+            //Conditions for enemy to shoot player at certain range
+            if (distance < shootRange)
             {
-                timer = 0;
-                shoot();
+                timer += Time.deltaTime;
+
+                if (timer > timeBetweenShot)
+                {
+                    timer = 0;
+                    shoot();
+                }
             }
         }
     }
