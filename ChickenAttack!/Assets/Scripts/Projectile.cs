@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
 
     public Rigidbody2D rb;
 
-    public int health;
+    public int damage;
 
     private void Start()
     {

@@ -344,7 +344,7 @@ MonoBehaviour:
   player: {fileID: 1423742252}
   speed: 2.5
   rb: {fileID: 654761360}
-  distanceBetween: 6.78
+  distanceBetween: 5.64
 --- !u!61 &654761362
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -529,6 +529,7 @@ MonoBehaviour:
   shotPoint: {fileID: 1284477667}
   projectile: {fileID: 5836040982805557876, guid: c18b9cd62a5fc1f4f88d22b40003e2d9, type: 3}
   timeBetweenShot: 0.6
+  health: 0
   animator: {fileID: 1423742257}
 --- !u!50 &1423742256
 Rigidbody2D:
@@ -659,7 +660,7 @@ MonoBehaviour:
   bulletPos: {fileID: 1667057626}
   player: {fileID: 1423742252}
   timeBetweenShot: 1
-  range: 8
+  range: 6
 --- !u!50 &1667057624
 Rigidbody2D:
   serializedVersion: 4
@@ -748,7 +749,7 @@ Transform:
   m_GameObject: {fileID: 1667057622}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.12, y: 3.1, z: 0.08557958}
+  m_LocalPosition: {x: 6.32, y: 3.53, z: 0.08557958}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

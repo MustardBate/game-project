@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public float timeBetweenShot;
     float nextTimeShot;
 
+    public float health;
+
     public Animator animator;
 
     // Start is called before the first frame update
