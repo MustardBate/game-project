@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MeleeEnemy : EnemyManager
-{ 
+{
+    public float meleeDamage;
+
     new void Start()
     {
         base.Start();

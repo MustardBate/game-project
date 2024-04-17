@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class EnemyManager : MonoBehaviour
 {
-    private float health;
-    public float fullHealth;
+    private int health;
+    public int fullHealth;
 
     public float rangeTilPursuit;
     public float walkingSpeed;
@@ -14,10 +14,13 @@ public abstract class EnemyManager : MonoBehaviour
     public Rigidbody2D rb;
     public GameObject player;
 
+    public HealthBar healthBar;
+
     // Start is called before the first frame update
     protected void Start()
     {
         health = fullHealth;
+        healthBar.setMaxHealth(fullHealth);
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
 
@@ -26,9 +29,10 @@ public abstract class EnemyManager : MonoBehaviour
         direction.Normalize();
     }
 
-    public void takeDamage(float damage)
+    public void takeDamage(int damage)
     {
         health -= damage;
+        healthBar.setHealth(health);
 
         if (health <= 0)
         {

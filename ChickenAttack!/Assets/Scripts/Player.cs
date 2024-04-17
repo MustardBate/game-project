@@ -17,16 +17,19 @@ public class Player : MonoBehaviour
     public float timeBetweenShot;
     float nextTimeShot;
 
-    private float health;
-    public float maxHealth;
+    private int health;
+    public int maxHealth;
+    public HealthBar healthBar;
 
     public Animator animator;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         health = maxHealth;
+        healthBar.setMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -58,9 +61,11 @@ public class Player : MonoBehaviour
 
     }
 
-    public void takeDamage(float damage)
+    public void takeDamage(int damage)
     {
         health -= damage;
+
+        healthBar.setHealth(health);
 
         if (health <= 0)
         {
