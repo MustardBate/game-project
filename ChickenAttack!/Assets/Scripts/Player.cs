@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,11 @@ public class Player : MonoBehaviour
     public float timeBetweenShot;
     float nextTimeShot;
 
+    //private int MaxAmmo = 6;
+    //private int CurrentAmmo;
+    //public int reloadTime;
+    //private bool isReloading = false;
+
     private int health;
     public int maxHealth;
     public HealthBar healthBar;
@@ -29,8 +35,14 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         health = maxHealth;
-        healthBar.setMaxHealth(maxHealth);
+        healthBar.setMaxHealth(maxHealth);  
+        //CurrentAmmo = MaxAmmo;
     }
+
+    //private void OnEnable()
+    //{
+    //    isReloading = false;
+    //}
 
     // Update is called once per frame
     void Update()
@@ -50,16 +62,27 @@ public class Player : MonoBehaviour
         weapon.rotation = Quaternion.Euler(0, 0, angle + offset);
 
         //Shooting
+        //if (isReloading)
+        //    return;
+
+        //if(CurrentAmmo <= 0)
+        //{
+        //    StartCoroutine(Reload());
+        //    return;
+        //}
+
         if (Input.GetMouseButton(0))
         {
-            if (Time.time > nextTimeShot)
-            {
-                nextTimeShot = Time.time + timeBetweenShot;
-                Instantiate(projectile, shotPoint.position, shotPoint.rotation);
-            }
+            Shoot();
         }
 
     }
+
+    private void FixedUpdate()
+    {
+        rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
+    }
+
 
     public void takeDamage(int damage)
     {
@@ -73,9 +96,28 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+
+    private void Shoot()
     {
-        rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
-    }   
+        //CurrentAmmo--;
+        //Debug.Log("Current bullet:" + CurrentAmmo);
+        if (Time.time > nextTimeShot)
+        {
+            nextTimeShot = Time.time + timeBetweenShot;
+            Instantiate(projectile, shotPoint.position, shotPoint.rotation);
+        }
+    }
+
+    //IEnumerator Reload()
+    //{
+    //    isReloading = true;
+    //    Debug.Log("Reloading");
+
+    //    yield return new WaitForSeconds(reloadTime - .25f);
+    //    yield return new WaitForSeconds(1f);
+
+    //    CurrentAmmo = MaxAmmo;
+    //    isReloading = false;
+    //}
 }
 

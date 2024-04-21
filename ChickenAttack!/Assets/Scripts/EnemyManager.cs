@@ -12,7 +12,7 @@ public abstract class EnemyManager : MonoBehaviour
     protected float distance;
 
     public Rigidbody2D rb;
-    public GameObject player;
+    protected GameObject player;
 
     public HealthBar healthBar;
 
@@ -23,7 +23,10 @@ public abstract class EnemyManager : MonoBehaviour
         healthBar.setMaxHealth(fullHealth);
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
+    }
 
+    protected void Update()
+    {
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();

@@ -17,7 +17,12 @@ public class RangedEnemy : EnemyManager
         base.Start();
     }
 
-    private void Update()
+    new void Update()
+    {
+        base.Update(); 
+    }
+
+    private void FixedUpdate()
     {
         //Conditions for enemy to pursuit player at certain range
         if (distance < rangeTilPursuit)

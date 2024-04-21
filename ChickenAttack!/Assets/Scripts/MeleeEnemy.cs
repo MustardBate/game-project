@@ -11,7 +11,7 @@ public class MeleeEnemy : EnemyManager
         base.Start();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //Conditions
         if (distance < rangeTilPursuit)
