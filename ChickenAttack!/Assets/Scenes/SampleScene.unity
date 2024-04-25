@@ -1045,11 +1045,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   rb: {fileID: 1423742256}
-  weapon: {fileID: 1763906659}
-  offset: 180
-  shotPoint: {fileID: 1284477667}
-  projectile: {fileID: 5836040982805557876, guid: c18b9cd62a5fc1f4f88d22b40003e2d9, type: 3}
-  timeBetweenShot: 0.6
   maxHealth: 100
   healthBar: {fileID: 1983772269}
   animator: {fileID: 1423742257}
@@ -1156,6 +1151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1763906659}
   - component: {fileID: 1763906660}
+  - component: {fileID: 1763906661}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -1231,6 +1227,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1763906661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763906658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 380bb4af6f885c1439386b8fd3b80ef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 1763906659}
+  shotPoint: {fileID: 1763906659}
+  projectile: {fileID: 5836040982805557876, guid: c18b9cd62a5fc1f4f88d22b40003e2d9, type: 3}
+  timeBetweenShot: 0.3
 --- !u!1 &1963182734
 GameObject:
   m_ObjectHideFlags: 0
