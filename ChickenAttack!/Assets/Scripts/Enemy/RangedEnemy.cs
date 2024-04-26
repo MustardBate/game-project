@@ -6,10 +6,12 @@ public class RangedEnemy : EnemyManager
 {
     public GameObject bullet;
     public Transform bulletPos;
+    public Transform weapon;
 
     private float timer;
     public float timeBetweenShot;
     public float shootingRange;
+
 
 
     new void Start()
@@ -19,7 +21,11 @@ public class RangedEnemy : EnemyManager
 
     new void Update()
     {
-        base.Update(); 
+        base.Update();
+
+        Vector3 displacement = weapon.position - player.transform.position;
+        float angle = Mathf.Atan2(displacement.y, displacement.x) * Mathf.Rad2Deg;
+        weapon.rotation = Quaternion.Euler(0, 0, angle + 180);
     }
 
     private void FixedUpdate()
