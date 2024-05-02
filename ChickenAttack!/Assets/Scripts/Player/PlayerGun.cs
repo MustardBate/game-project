@@ -5,17 +5,16 @@ using UnityEngine;
 public class PlayerGun : MonoBehaviour
 {
     public Transform weapon;
-    private float offset = 180;
 
     public Transform shotPoint;
     public GameObject projectile;
 
-    public float timeBetweenShot;
+    public float timeBetweenShot = .5f;
     float nextTimeShot;
 
     private int maxAmmo = 6;
     private int currentAmmo;
-    public float reloadTime = 1f;
+    public float reloadTime = 1.3f;
     private bool isReloading = false;
 
     // Start is called before the first frame update
@@ -29,7 +28,7 @@ public class PlayerGun : MonoBehaviour
     {
         Vector3 displacement = weapon.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float angle = Mathf.Atan2(displacement.y, displacement.x) * Mathf.Rad2Deg;
-        weapon.rotation = Quaternion.Euler(0, 0, angle + offset);
+        weapon.rotation = Quaternion.Euler(0, 0, angle + 180);
 
         if (isReloading) 
             return;
@@ -53,8 +52,6 @@ public class PlayerGun : MonoBehaviour
         currentAmmo--;
         Debug.Log("Current ammo: " + currentAmmo);
         Instantiate(projectile, shotPoint.position, shotPoint.rotation);
-
-        CinemachineShake.Instance.ShakeCamera(5f, .1f);
     }
     
     IEnumerator Reload()
