@@ -43,6 +43,8 @@ public class RangedEnemy : EnemyManager
                 {
                     timer = 0;
                     shoot();
+
+                    CameraShake.Instance.ShakeCamera(3f, .1f);
                 }
             }
         }

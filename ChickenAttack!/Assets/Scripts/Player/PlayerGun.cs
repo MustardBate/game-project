@@ -17,6 +17,9 @@ public class PlayerGun : MonoBehaviour
     public float reloadTime = 1.3f;
     private bool isReloading = false;
 
+    public float ShakeIntensity = 4f;
+    public float ShakeTime = .3f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +47,8 @@ public class PlayerGun : MonoBehaviour
         {
             nextTimeShot = Time.time + timeBetweenShot;
             Shoot();
+
+            CameraShake.Instance.ShakeCamera(ShakeIntensity, ShakeTime);
         }
     }
 
