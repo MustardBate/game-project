@@ -48,7 +48,7 @@ public class PlayerGun : MonoBehaviour
             nextTimeShot = Time.time + timeBetweenShot;
             Shoot();
 
-            CameraShake.Instance.ShakeCamera(ShakeIntensity, ShakeTime);
+            //CameraShake.Instance.ShakeCamera(ShakeIntensity, ShakeTime);
         }
     }
 
